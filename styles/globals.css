@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens — populated in Sprint 2 (design system and shell).
+ * Theme is selected via `data-theme="dark" | "light"` on <html>.
+ * Keep all colors, spacing, radii and type sizes here; no ad-hoc values
+ * in components.
+ */
+:root[data-theme='dark'] {
+  /* --color-background: ; */
+  /* --color-foreground: ; */
+  /* --color-accent: ; */
+  /* --space-*: ; */
+  /* --radius-*: ; */
+  /* --text-*: ; */
+}
+
+:root[data-theme='light'] {
+  /* --color-background: ; */
+  /* --color-foreground: ; */
+  /* --color-accent: ; */
+}

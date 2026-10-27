@@ -1,0 +1,10 @@
+.next
+node_modules
+coverage
+playwright-report
+test-results
+
+# pre-existing reference files — do not reformat
+assets/
+docs/
+CLAUDE.md

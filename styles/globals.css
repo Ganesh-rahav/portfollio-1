@@ -1,22 +1,399 @@
 @import 'tailwindcss';
 
 /*
- * Design tokens — populated in Sprint 2 (design system and shell).
- * Theme is selected via `data-theme="dark" | "light"` on <html>.
- * Keep all colors, spacing, radii and type sizes here; no ad-hoc values
- * in components.
+ * Design tokens. Source of truth for every color, spacing, radius and
+ * font-size value in the site — components reference these classes and
+ * custom properties only, never ad-hoc numbers. Ported from the
+ * approved reference: assets/design/reference-design-source.html.
+ * Keep styles/tokens.ts in sync — it mirrors the color values for
+ * tests/unit/contrast.test.ts, which has no CSS to read from.
  */
+
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surf);
+  --color-line: var(--line);
+  --color-text: var(--fg);
+  --color-muted: var(--mut);
+  /* Reserved — see the --mut2 definition below. */
+  --color-muted-large: var(--mut2);
+  --color-accent: var(--acc);
+  --color-button-fill: var(--btn);
+  --color-button-text: var(--on-btn);
+
+  --color-hero-bg: #0c120f;
+  --color-hero-text: #f2f4f3;
+  --color-hero-chip-fill: #9be0bb;
+  --color-hero-chip-text: #0c120f;
+
+  --radius-sm: 2px;
+  --radius-md: 6px;
+}
+
 :root[data-theme='dark'] {
-  /* --color-background: ; */
-  /* --color-foreground: ; */
-  /* --color-accent: ; */
-  /* --space-*: ; */
-  /* --radius-*: ; */
-  /* --text-*: ; */
+  --bg: #0c120f;
+  --surf: #141c18;
+  --line: #27322c;
+  --fg: #f2f4f3;
+  --mut: #a3ada7;
+  /* Muted-large: 3:1 against --bg/--surf in this theme — see contrast.test.ts. */
+  --mut2: #8a948e;
+  --acc: #9be0bb;
+  --btn: #9be0bb;
+  --on-btn: #0c120f;
 }
 
 :root[data-theme='light'] {
-  /* --color-background: ; */
-  /* --color-foreground: ; */
-  /* --color-accent: ; */
+  --bg: #ecefed;
+  --surf: #f6f8f7;
+  --line: #cbd2ce;
+  --fg: #0c120f;
+  --mut: #4e5953;
+  /* Muted-large: only 4.39:1 against --bg in this theme (fails strict
+     4.5:1, clears 3:1) — use ONLY at 24px or larger. Never use for body
+     copy, captions or any text under 24px. */
+  --mut2: #667169;
+  --acc: #17724a;
+  --btn: #0c120f;
+  --on-btn: #eaf5ee;
+}
+
+/* Hero tokens are fixed — the hero is always dark, in both themes. */
+:root {
+  --hero-bg: #0c120f;
+  --hero-fg: #f2f4f3;
+  --hero-tag-border: rgba(242, 244, 243, 0.38);
+  --hero-chip-bg: #9be0bb;
+  --hero-chip-fg: #0c120f;
+
+  /* Layout */
+  --max-width: 1440px;
+  --space-side: 80px;
+  --space-section: 120px;
+  --button-height: 54px;
+  --header-height: 88px;
+  --touch-min: 44px;
+
+  /* Type scale — desktop sizes */
+  --text-name: 152px;
+  --text-contact-headline: 92px;
+  --text-section-headline: 60px;
+  --text-tranzora-headline: 48px;
+  --text-step-title: 30px;
+  --text-tagline: 22px;
+  --text-body: 18px;
+  --text-body-lg: 20px;
+  --text-eyebrow: 12px;
+  --text-tag: 15px;
+  --text-button: 16px;
+  --text-brand: 15px;
+  --text-menu-link: 56px;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --space-side: 20px;
+    --space-section: 80px;
+    --header-height: 72px;
+
+    --text-name: 76px;
+    --text-contact-headline: 46px;
+    --text-section-headline: 38px;
+    --text-tranzora-headline: 34px;
+    --text-tagline: 20px;
+    --text-body: 17px;
+    --text-body-lg: 18px;
+    --text-menu-link: 32px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: var(--font-hanken), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+
+/* Container */
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-side);
+}
+
+/* Section */
+.sec {
+  padding: var(--space-section) 0;
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mut);
+  font-weight: 600;
+}
+
+/* Tag */
+.chip {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 20px;
+  font-size: var(--text-tag);
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.2;
+  background: transparent;
+}
+.chip.g {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: var(--on-btn);
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: var(--button-height);
+  padding: 0 26px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-button);
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  background: transparent;
+  cursor: pointer;
+}
+.btn.fill {
+  background: var(--btn);
+  color: var(--on-btn);
+  border-color: var(--btn);
+}
+.btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Header */
+.hdr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: var(--text-brand);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+}
+.brand img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: block;
+}
+.hdr-r {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ib {
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+.ib svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.burger {
+  width: 56px;
+  height: var(--touch-min);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 9px;
+  padding: 0;
+}
+.burger i {
+  display: block;
+  height: 2px;
+  background: var(--fg);
+  width: 50px;
+  transition: transform 0.2s ease;
+}
+.burger[aria-expanded='true'] i:first-child {
+  transform: translateY(5.5px) rotate(45deg);
+}
+.burger[aria-expanded='true'] i:last-child {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .burger i {
+    transition: none;
+  }
+}
+
+/* Full-screen menu — z-index sits below .hdr (3) so the header, and the
+   burger that closes it, stay visible and clickable while it's open. */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* `display:flex` above would otherwise beat the UA [hidden] stylesheet
+   rule, since author styles always win over user-agent defaults. */
+.menu-overlay[hidden] {
+  display: none;
+}
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.menu-link {
+  font-weight: 500;
+  font-size: var(--text-menu-link);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--fg);
+  text-decoration: none;
+  width: max-content;
+}
+.menu-link:hover,
+.menu-link:focus-visible {
+  color: var(--acc);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: var(--space-side);
+  top: -100px;
+  z-index: 20;
+  background: var(--btn);
+  color: var(--on-btn);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 20px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .burger {
+    width: 44px;
+  }
+  .burger i {
+    width: 32px;
+  }
+  .chip {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
+ * Dev-only /styleguide scaffolding below this line — not part of the
+ * production design system, just a frame to preview the absolutely
+ * positioned Header in isolation, and one real usage of the
+ * muted-large token so tests/unit/css-token-audit.test.ts has a true
+ * positive to check alongside its synthetic cases.
+ */
+.demo-frame {
+  position: relative;
+  min-height: 160px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surf);
+  overflow: hidden;
+}
+.demo-muted-large {
+  color: var(--mut2);
+  font-size: var(--text-step-title);
 }

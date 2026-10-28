@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { site } from '@/content/site';
+import { ChromaticText } from '@/components/ui/ChromaticText';
 import { Tag } from '@/components/ui/Tag';
 import { HeroReveal } from './HeroReveal';
 
@@ -23,7 +24,9 @@ export function Hero() {
       </div>
 
       <div className="hero-copy">
-        <h1 className="hero-name">{site.name}</h1>
+        <h1 className="hero-name">
+          <ChromaticText text={site.name} />
+        </h1>
         <p className="hero-role">CTO of Tranzora Digital</p>
         <div className="hero-tags">
           <Tag variant="accent">Cybersecurity</Tag>

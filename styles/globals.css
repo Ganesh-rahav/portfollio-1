@@ -479,6 +479,40 @@ body {
   margin-top: 24px;
 }
 
+.chromatic-text {
+  position: relative;
+  display: inline-block;
+}
+.chromatic-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--chromatic-opacity, 0);
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(circle 160px at var(--cx, 50%) var(--cy, 50%), #000 0, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    circle 160px at var(--cx, 50%) var(--cy, 50%),
+    #000 0,
+    transparent 100%
+  );
+  transform: translate(var(--ox, 0px), var(--oy, 0px));
+  will-change: transform, opacity;
+}
+.chromatic-red {
+  color: #ff2a2a;
+}
+.chromatic-green {
+  color: #2aff6a;
+}
+.chromatic-blue {
+  color: #2a6aff;
+}
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .chromatic-layer {
+    display: none;
+  }
+}
+
 @media (max-width: 760px) {
   .hero {
     height: auto;

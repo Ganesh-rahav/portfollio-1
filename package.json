@@ -17,6 +17,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "lenis": "^1.3.27",
     "next": "15.5.28",
     "react": "19.2.0",
     "react-dom": "19.2.0",

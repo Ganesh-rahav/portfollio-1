@@ -378,6 +378,133 @@ body {
   }
 }
 
+/* Hero — always dark, regardless of the active theme. */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+  /* Scope the shared theme variables to the fixed hero palette so the
+     existing Button/Tag classes render correctly in here without
+     needing hero-specific variants. */
+  --fg: var(--hero-fg);
+  --line: var(--hero-tag-border);
+  --acc: var(--hero-chip-bg);
+  --btn: var(--hero-chip-bg);
+  --on-btn: var(--hero-chip-fg);
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+.hero-layer {
+  position: absolute;
+  inset: 0;
+}
+.hero-layer img {
+  object-fit: cover;
+  object-position: 74% center;
+}
+/* Default (no-JS) state: fully masked away, so only the silhouette
+   shows until HeroReveal sets --x/--y/--r on #hero-media. */
+.hero-photo {
+  mask-image: radial-gradient(
+    circle var(--r, 0px) at var(--x, 50%) var(--y, 50%),
+    #000 0,
+    #000 52%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--r, 0px) at var(--x, 50%) var(--y, 50%),
+    #000 0,
+    #000 52%,
+    transparent 100%
+  );
+}
+.hero.is-photo-visible .hero-photo {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+.hero-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid var(--hero-fg);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(var(--x, -100px), var(--y, -100px));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+.hero.is-hovering .hero-ring {
+  opacity: 1;
+}
+@media (hover: none) {
+  .hero-ring {
+    display: none;
+  }
+}
+
+.hero-copy {
+  position: absolute;
+  left: var(--space-side);
+  bottom: 112px;
+  z-index: 2;
+  max-width: 640px;
+}
+.hero-name {
+  font-size: var(--text-name);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+.hero-role {
+  margin-top: 28px;
+  font-size: var(--text-tagline);
+  font-weight: 500;
+}
+.hero-tags {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero-see-photo {
+  margin-top: 24px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    height: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-media {
+    position: relative;
+    height: 540px;
+    order: 1;
+  }
+  .hero-layer img {
+    object-position: 78% center;
+  }
+  .hero-copy {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    max-width: none;
+    padding: 32px 20px 56px;
+    /* "Name over the image": copy renders above the media block. */
+    order: -1;
+  }
+}
+
 /*
  * Dev-only /styleguide scaffolding below this line — not part of the
  * production design system, just a frame to preview the absolutely

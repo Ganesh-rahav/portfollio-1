@@ -1,6 +1,6 @@
-import { site } from '@/content/site';
 import { SkipLink } from '@/components/ui/SkipLink';
 import { Header } from '@/components/layout/Header';
+import { Hero } from '@/components/hero/Hero';
 
 export default function HomePage() {
   return (
@@ -8,7 +8,7 @@ export default function HomePage() {
       <SkipLink />
       <Header />
       <main id="main-content">
-        <h1>{site.name}</h1>
+        <Hero />
       </main>
     </>
   );

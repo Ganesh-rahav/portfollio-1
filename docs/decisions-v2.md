@@ -16,14 +16,13 @@ Updated 2026-10-23. This is the only decisions file for v2. Anything not here is
 - Instagram: https://www.instagram.com/ga4_rahav/
 - No LinkedIn. No contact form in v2 (email and WhatsApp only). A form can be added later.
 
-## Design
-- Soft and modern. Palette: green, black, grey. Dark theme: near-black background, grey text, soft green accent. Light theme: soft light grey background, black text, the same green. Exact values are set in the design-system sprint and checked for 4.5:1 contrast.
-- Hero: Ganesh's photo (background removed) as a halftone dot portrait. Cursor makes dots burst outward in a starburst and turn green. On scroll the dots dissolve like liquid and "Who am I" appears. Reference: assets/hero-preview.html (working prototype) and assets/footer-animation-reference.mp4.
-- Footer: giant halftone wordmark using the same dot engine as the hero.
-- Menu: round button, bottom-right, opens a full-screen menu.
-- Logo: assets/tranzora-logo.png in the header.
-- Theme toggle: yes. Sound toggle: yes (off by default, opt-in, never autoplays, remembered, lazy-loaded).
-- Avoid: purple gradients, glassmorphism, stock images, emoji icons, identical card grids, filler words.
+## Design (approved 2026-10-27, final direction: silhouette hero + green)
+- Hero: Ganesh as a dark backlit silhouette on a soft green glow (assets/design/hero-silhouette.jpg). Moving the cursor over him reveals the real photo (assets/design/hero-glow.jpg, same framing) only where the cursor is, through a soft circular mask. Style inspiration: a clean backlit-silhouette portrait. The stock image itself is NOT used (not Ganesh, licensing, honesty).
+- Palette: black-green, grey and one soft green accent (#9BE0BB dark theme, #17724A light theme). Hero is always dark. Dark theme is the default; light theme available.
+- Font: Hanken Grotesk only (medium weight, tight tracking). No serif, no italics.
+- Layout: huge name left, tagline, outlined rectangular tags (first tag filled green), two-line menu top-right.
+- Footer: giant dot-pattern wordmark with a green burst (assets/design/wm3-*.png).
+- Sections: hero, About, Tranzora Digital, How I work (4 steps), Contact, footer. No personal/gymnastics section. Sound toggle kept (off by default).
 
 ## Hosting and SEO
 - Vercel, as a subdomain of tranzora.digital. Name still to be decided (candidate ganesh.tranzora.digital).
@@ -39,9 +38,7 @@ Updated 2026-10-23. This is the only decisions file for v2. Anything not here is
 - Student, B.Sc. IT with Cybersecurity, class of 2027, Trichy.
 - Co-Founder and CTO of Tranzora Digital.
 - Tranzora's work (website development, SEO, digital branding, paid advertising, AI automations) and philosophy (understand the business first, recommend only what creates value). Deva to confirm wording before launch.
-- Habit: 10+ cold calls a day (confirm still true before launch).
-- Former gymnast, still training (handstands, planche, front lever).
-- Cycle: Learn, Build, Test, Fail, Improve, Ship, Sell, Repeat.
+- Process, 4 steps: Learn, Build, Test, Ship (then start again).
 
 ## Open
-1. Subdomain name. 2. Tranzora description in Deva's words. 3. Ganesh's own skills list, if any. 4. Exact greens and fonts (decided in Sprint 2). 5. Gymnastics photo or video, if any. 6. Sound clips.
+1. Subdomain name. 2. Tranzora description in Deva's words. 3. Ganesh's own skills list, if any. 4. Sound clips.

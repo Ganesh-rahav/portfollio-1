@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ganesh Rahav — Portfolio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+body{margin:0}
+.gr{--bg:#0C120F;--surf:#141C18;--line:#27322C;--fg:#F2F4F3;--mut:#A3ADA7;--mut2:#8A948E;--btn:#9BE0BB;--on-btn:#0C120F;--acc:#9BE0BB;background:var(--bg);color:var(--fg);font-family:'Hanken Grotesk',system-ui,sans-serif;width:100%;overflow:hidden;position:relative;-webkit-font-smoothing:antialiased;font-size:18px;line-height:1.55}
+.gr-light{--bg:#ECEFED;--surf:#F6F8F7;--line:#CBD2CE;--fg:#0C120F;--mut:#4E5953;--mut2:#667169;--btn:#0C120F;--on-btn:#EAF5EE;--acc:#17724A}
+.gr *{box-sizing:border-box}
+.gr h1,.gr h2,.gr h3,.gr p{margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding:0 80px}
+.hd{font-weight:500;letter-spacing:-0.04em;line-height:1}
+.hl{color:var(--acc)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero{position:relative;height:900px;overflow:hidden;background:#0C120F;color:#F2F4F3}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;display:block}
+.hdr{position:absolute;top:0;left:0;right:0;z-index:3;height:88px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:#F2F4F3;text-decoration:none}
+.brand img{width:32px;height:32px;border-radius:50%;display:block}
+.hdr-r{display:flex;align-items:center;gap:6px}
+.ib{width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:#F2F4F3;display:grid;place-items:center;cursor:pointer;padding:0}
+.ib svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.burger{width:56px;height:44px;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:9px;padding:0}
+.burger i{display:block;height:2px;background:#F2F4F3;width:50px}
+.hero-copy{position:absolute;left:80px;bottom:112px;z-index:2;max-width:640px}
+.name{font-size:152px;line-height:.9;letter-spacing:-0.05em}
+.tag{margin-top:28px;font-size:22px;line-height:1.45;font-weight:500;max-width:460px}
+.chips{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;max-width:520px}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:2px;padding:12px 20px;font-size:15px;font-weight:500;color:var(--fg);line-height:1.2}
+.hero .chip{border-color:rgba(242,244,243,.38);background:rgba(255,255,255,.06);color:#F2F4F3}
+.hero .chip.g{background:#9BE0BB;border-color:#9BE0BB;color:#0C120F}
+.sec{padding:120px 0}
+.two{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:40px}
+.big{font-size:60px}
+.body{margin-top:28px;font-size:20px;color:var(--mut);max-width:660px}
+.facts{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.fact{padding:24px 24px 0 0}
+.fact .eyebrow{display:block;margin-bottom:8px}
+.fact p{font-size:18px;line-height:1.45;font-weight:500}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:6px;padding:64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px}
+.tz-head{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.tz-head img{width:48px;height:48px;border-radius:50%;display:block}
+.h2{font-size:48px;letter-spacing:-0.035em;line-height:1.04}
+.tz-p{margin-top:20px;font-size:19px;color:var(--mut);max-width:520px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px;border-radius:2px;font-size:16px;font-weight:500;text-decoration:none;border:1px solid var(--fg);color:var(--fg);background:transparent}
+.btn.fill{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.svc li{display:flex;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);font-size:24px;font-weight:500;letter-spacing:-0.02em}
+.svc li b{font-weight:500;font-size:14px;color:var(--mut);width:24px;letter-spacing:0}
+.loop{margin-top:64px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.step{border-top:1px solid var(--line);padding-top:24px;position:relative}
+.step:before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--mut)}
+.step.last:before{background:var(--acc);border-color:var(--acc)}
+.step b{display:block;font-size:13px;font-weight:600;color:var(--mut);margin-bottom:10px;letter-spacing:.08em}
+.step h3{font-size:30px;font-weight:500;letter-spacing:-0.03em}
+.step p{margin-top:8px;font-size:16px;color:var(--mut);max-width:240px}
+.cta{padding:144px 0 104px;text-align:center}
+.cta .huge{font-size:92px;max-width:1040px;margin:24px auto 0;letter-spacing:-0.045em}
+.cta .row{margin-top:48px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.links{margin-top:36px;display:flex;justify-content:center;gap:32px;font-size:16px;font-weight:500}
+.links a{color:var(--mut);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:3px}
+.foot{padding:24px 0 40px}
+.foot img.wm{display:block;width:100%;height:auto}
+.frow{margin-top:32px;display:flex;justify-content:space-between;gap:16px;font-size:14px;color:var(--mut);flex-wrap:wrap}
+.frow a{color:var(--mut);text-decoration:none}
+@media (max-width:760px){
+.gr{font-size:17px}
+.wrap{padding:0 20px}
+.hero{height:auto;overflow:visible}
+.hero-bg{position:relative;height:540px;object-position:78% center}
+.hdr{height:72px}
+.burger{width:44px}.burger i{width:32px}
+.hero-copy{position:relative;left:auto;bottom:auto;max-width:none;padding:32px 20px 56px}
+.name{font-size:76px}
+.tag{font-size:20px;margin-top:22px}
+.chips{margin-top:26px;gap:10px}
+.chip{padding:10px 14px;font-size:14px}
+.sec{padding:80px 0}
+.two{grid-template-columns:1fr;gap:16px}
+.big{font-size:38px}
+.body{font-size:18px}
+.facts{grid-template-columns:1fr;margin-top:36px}
+.fact{padding:18px 0 0}
+.panel{grid-template-columns:1fr;padding:28px 22px;gap:36px}
+.h2{font-size:34px}
+.svc li{font-size:21px;padding:16px 0}
+.loop{grid-template-columns:1fr;gap:28px;margin-top:40px}
+.cta{padding:88px 0 64px}
+.cta .huge{font-size:46px}
+.cta .row{flex-direction:column;align-items:stretch}
+.btn{justify-content:center}
+.links{gap:20px;flex-wrap:wrap}
+}
+</style>
+</helmet>
+<div class="gr {{themeClass}}" id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-bg" src="/_blob/74fc999b391bd113e9b9765e71accc6a" alt="Silhouette portrait of Ganesh Rahav against a soft green glow">
+
+  <div class="wrap hdr">
+    <a class="brand" href="#top" aria-label="Ganesh Rahav, home">
+      <img src="/_blob/546531e31e121898cedaf75ab4958eb3" alt="Tranzora Digital logo">
+      <span>Ganesh Rahav</span>
+    </a>
+    <div class="hdr-r">
+      <button class="ib" type="button" aria-label="Turn sound on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3.5L12 18V6L7.5 10H4z"/><path d="M16 9.5a4 4 0 0 1 0 5"/><path d="M18.5 7a7.5 7.5 0 0 1 0 10"/></svg>
+      </button>
+      <button class="ib" type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg>
+      </button>
+      <button class="burger" type="button" aria-label="Open menu"><i></i><i></i></button>
+    </div>
+  </div>
+
+  <div class="hero-copy">
+    <h1 class="hd name">Ganesh<br>Rahav</h1>
+    <p class="tag">I don't just learn technology.<br>I build with it.</p>
+    <div class="chips">
+      <span class="chip g">Co-founder &amp; CTO</span>
+      <span class="chip">Tranzora Digital</span>
+      <span class="chip">B.Sc. IT · Cybersecurity</span>
+      <span class="chip">Trichy, India</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap two">
+    <div><span class="eyebrow">01 &nbsp;About</span></div>
+    <div>
+      <h2 class="hd big">A student from Trichy, <span class="hl">building a company while I study.</span></h2>
+      <p class="body">I'm completing a B.Sc. in Information Technology with Cybersecurity at Jamal Mohamed College while building Tranzora Digital as co-founder and CTO. I learn by building things that have to work.</p>
+      <div class="facts">
+        <div class="fact"><span class="eyebrow">Based in</span><p>Trichy, Tamil Nadu, India</p></div>
+        <div class="fact"><span class="eyebrow">Studying</span><p>B.Sc. IT with Cybersecurity, class of 2027</p></div>
+        <div class="fact"><span class="eyebrow">Building</span><p>Co-founder &amp; CTO, Tranzora Digital</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANZORA -->
+<section class="sec" style="padding-top:0" id="tranzora">
+  <div class="wrap">
+    <div class="panel">
+      <div>
+        <div class="tz-head">
+          <img src="/_blob/546531e31e121898cedaf75ab4958eb3" alt="">
+          <div>
+            <span class="eyebrow" style="display:block;margin-bottom:8px">02 &nbsp;What I'm building</span>
+            <span class="chip" style="padding:6px 12px;font-size:14px">Co-founder &amp; CTO</span>
+          </div>
+        </div>
+        <h2 class="hd h2">Tranzora Digital: a digital growth partner that <span class="hl">recommends only what creates value.</span></h2>
+        <p class="tz-p">We help businesses improve their digital presence and grow. We start by understanding the business, and we don't sell services that only inflate the invoice.</p>
+        <div style="margin-top:36px"><a class="btn fill" href="https://tranzora.digital">Visit tranzora.digital
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:20px">What the company does</span>
+        <ul class="svc">
+          <li><b>01</b><span>Website development</span></li>
+          <li><b>02</b><span>SEO</span></li>
+          <li><b>03</b><span>Digital branding</span></li>
+          <li><b>04</b><span>Paid advertising</span></li>
+          <li><b>05</b><span>AI automations</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section class="sec" style="padding-top:0" id="how">
+  <div class="wrap">
+    <span class="eyebrow">03 &nbsp;How I work</span>
+    <h2 class="hd big" style="margin-top:16px">Learn by building.</h2>
+    <div class="loop">
+      <div class="step"><b>01</b><h3>Learn</h3><p>Pick up what the project needs.</p></div>
+      <div class="step"><b>02</b><h3>Build</h3><p>Make a real version, not a demo.</p></div>
+      <div class="step"><b>03</b><h3>Test</h3><p>Break it before a user does.</p></div>
+      <div class="step last"><b>04</b><h3>Ship</h3><p>Put it live, then start again.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <span class="eyebrow">04 &nbsp;Contact</span>
+    <h2 class="hd huge">Have something worth building? <span class="hl">Let's talk.</span></h2>
+    <div class="row">
+      <a class="btn fill" href="mailto:ga4.rahav7@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+        ga4.rahav7@gmail.com</a>
+      <a class="btn" href="https://wa.me/918438275577?text=Hi%20Ganesh%2C%20I%20found%20your%20portfolio.">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.3 18.7L4 20z"/></svg>
+        Message on WhatsApp</a>
+    </div>
+    <div class="links"><a href="https://github.com/Ganesh-rahav">GitHub</a><a href="https://www.instagram.com/ga4_rahav/">Instagram</a><a href="https://tranzora.digital">Tranzora Digital</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <sc-if value="{{isDark}}" hint-placeholder-val="{{false}}">
+      <img class="wm" src="/_blob/92983314958e943099dac83d230af481" alt="Ganesh Rahav">
+    </sc-if>
+    <sc-if value="{{isLight}}" hint-placeholder-val="{{true}}">
+      <img class="wm" src="/_blob/f9ecb7ce79abbfe086fdfeaf514ba533" alt="Ganesh Rahav">
+    </sc-if>
+    <div class="frow"><span>© 2026 Ganesh Rahav · Trichy, India</span><a href="#top">Back to top ↑</a></div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","default":"dark","options":["dark","light"]},"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const dark = this.props.theme !== 'light';
+    return { themeClass: dark ? 'gr-dark' : 'gr-light', isDark: dark, isLight: !dark };
+  }
+}
+</script>
+</body>
+</html>

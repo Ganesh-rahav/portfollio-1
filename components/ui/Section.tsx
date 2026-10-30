@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Container } from './Container';
 import { Eyebrow } from './Eyebrow';
+import { Reveal } from './Reveal';
 
 type SectionProps = {
   id?: string;
@@ -15,7 +16,7 @@ export function Section({ id, eyebrow, children, className }: SectionProps) {
     <section id={id} className={classes}>
       <Container>
         <Eyebrow>{eyebrow}</Eyebrow>
-        {children}
+        <Reveal>{children}</Reveal>
       </Container>
     </section>
   );

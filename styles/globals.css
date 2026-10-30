@@ -100,6 +100,7 @@
     --text-contact-headline: 46px;
     --text-section-headline: 38px;
     --text-tranzora-headline: 34px;
+    --text-step-title: 34px;
     --text-tagline: 20px;
     --text-body: 17px;
     --text-body-lg: 18px;
@@ -378,9 +379,11 @@ body {
   }
 }
 
-/* Hero — always dark, regardless of the active theme. */
+/* Hero — always dark, regardless of the active theme. Sticky so About
+   can slide over it on scroll (About gets a higher z-index). */
 .hero {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 100vh;
   min-height: 640px;
   overflow: hidden;
@@ -464,10 +467,20 @@ body {
   letter-spacing: -0.05em;
   font-weight: 500;
 }
-.hero-role {
+.hero-tagline {
   margin-top: 28px;
   font-size: var(--text-tagline);
   font-weight: 500;
+  line-height: 1.45;
+}
+.hero-infinity {
+  display: inline-block;
+  color: var(--acc);
+}
+.hero-infinity-icon {
+  height: 0.7em;
+  width: auto;
+  vertical-align: baseline;
 }
 .hero-tags {
   margin-top: 32px;
@@ -502,6 +515,129 @@ body {
     padding: 32px 20px 56px;
     /* "Name over the image": copy renders above the media block. */
     order: -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Plain scroll, no sticky-cover slide. */
+  .hero {
+    position: relative;
+  }
+}
+
+/* Shared headline highlight */
+.hl {
+  color: var(--acc);
+}
+
+/* Shared section headline (About, How I work) */
+.section-headline {
+  margin-top: 16px;
+  font-size: var(--text-section-headline);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+/* About — solid background, stacks above the sticky hero on scroll. */
+.about {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+}
+.about-paragraph {
+  margin-top: 28px;
+  font-size: var(--text-body-lg);
+  color: var(--mut);
+  max-width: 660px;
+}
+.about-facts {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+.about-fact {
+  padding: 24px 24px 0 0;
+}
+.about-fact .eyebrow {
+  display: block;
+  margin-bottom: 8px;
+}
+.about-fact p {
+  font-size: var(--text-body);
+  line-height: 1.45;
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .about-facts {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+  .about-fact {
+    padding: 18px 0 0;
+  }
+}
+
+/* Tranzora — empty placeholder, filled next sprint. */
+.tranzora-placeholder {
+  position: relative;
+  z-index: 1;
+  min-height: 40vh;
+  background: var(--bg);
+}
+
+/* How I work */
+.how-steps {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+.how-step {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  position: relative;
+}
+.how-step::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--mut);
+}
+.how-step.is-last::before {
+  background: var(--acc);
+  border-color: var(--acc);
+}
+.how-step b {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mut);
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+}
+.how-step h3 {
+  font-size: var(--text-step-title);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.how-step p {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--mut);
+  max-width: 240px;
+}
+@media (max-width: 760px) {
+  .how-steps {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 40px;
   }
 }
 

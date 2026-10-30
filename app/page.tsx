@@ -1,6 +1,8 @@
 import { SkipLink } from '@/components/ui/SkipLink';
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/hero/Hero';
+import { About } from '@/components/sections/About';
+import { HowIWork } from '@/components/sections/HowIWork';
 
 export default function HomePage() {
   return (
@@ -9,6 +11,9 @@ export default function HomePage() {
       <Header />
       <main id="main-content">
         <Hero />
+        <About />
+        <section id="tranzora" className="tranzora-placeholder" />
+        <HowIWork />
       </main>
     </>
   );

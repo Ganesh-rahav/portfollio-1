@@ -11,9 +11,11 @@ export default function HomePage() {
       <Header />
       <main id="main-content">
         <Hero />
-        <About />
-        <section id="tranzora" className="tranzora-placeholder" />
-        <HowIWork />
+        <div className="after-hero">
+          <About />
+          <section id="tranzora" className="tranzora-placeholder" />
+          <HowIWork />
+        </div>
       </main>
     </>
   );

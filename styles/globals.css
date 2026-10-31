@@ -386,6 +386,7 @@ body {
 .hero {
   position: sticky;
   top: 0;
+  z-index: 0;
   height: 100vh;
   min-height: 640px;
   overflow: hidden;
@@ -566,6 +567,15 @@ body {
   }
 }
 
+/* Everything after the hero — one solid-background, higher-stacked
+   wrapper so the sticky hero never shows through any section below it,
+   not just the first one. */
+.after-hero {
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+}
+
 /* Shared headline highlight */
 .hl {
   color: var(--acc);
@@ -581,11 +591,6 @@ body {
 }
 
 /* About — solid background, stacks above the sticky hero on scroll. */
-.about {
-  position: relative;
-  z-index: 1;
-  background: var(--bg);
-}
 .about-grid {
   display: grid;
   grid-template-columns: 45% 1fr;
@@ -668,12 +673,10 @@ body {
   }
 }
 
-/* Tranzora — empty placeholder, filled next sprint. */
+/* Tranzora — empty placeholder, filled next sprint. Solid background and
+   stacking come from the .after-hero wrapper. */
 .tranzora-placeholder {
-  position: relative;
-  z-index: 1;
   min-height: 40vh;
-  background: var(--bg);
 }
 
 /* How I work */

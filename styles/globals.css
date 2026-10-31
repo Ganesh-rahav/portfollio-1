@@ -476,13 +476,14 @@ body {
   line-height: 1.45;
 }
 .hero-infinity {
-  display: inline-block;
   color: var(--acc);
 }
 .hero-infinity-icon {
-  height: 0.7em;
-  width: auto;
-  vertical-align: baseline;
+  display: inline-block;
+  height: 0.62em;
+  width: 1.24em;
+  vertical-align: -0.06em;
+  margin: 0 0.12em;
 }
 .hero-tags {
   margin-top: 32px;

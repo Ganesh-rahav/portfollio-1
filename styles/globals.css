@@ -87,7 +87,7 @@
   --text-tag: 15px;
   --text-button: 16px;
   --text-brand: 15px;
-  --text-menu-link: 56px;
+  --text-menu-link: clamp(40px, 6vw, 64px);
 }
 
 @media (max-width: 760px) {
@@ -242,6 +242,7 @@ body {
   border: 0;
   background: transparent;
   color: var(--fg);
+  opacity: 1;
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -273,6 +274,7 @@ body {
   display: block;
   height: 2px;
   background: var(--fg);
+  opacity: 1;
   width: 50px;
   transition: transform 0.2s ease;
 }
@@ -307,7 +309,7 @@ body {
 .menu-nav {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 .menu-link {
   font-weight: 500;
@@ -490,6 +492,44 @@ body {
 }
 .hero-see-photo {
   margin-top: 24px;
+}
+
+.chromatic-text {
+  position: relative;
+  display: inline-block;
+}
+.chromatic-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--chromatic-opacity, 0);
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(
+    circle 160px at var(--cx, 50%) var(--cy, 50%),
+    #000 0,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 160px at var(--cx, 50%) var(--cy, 50%),
+    #000 0,
+    transparent 100%
+  );
+  transform: translate(var(--ox, 0px), var(--oy, 0px));
+  will-change: transform, opacity;
+}
+.chromatic-red {
+  color: #ff2a2a;
+}
+.chromatic-green {
+  color: #2aff6a;
+}
+.chromatic-blue {
+  color: #2a6aff;
+}
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .chromatic-layer {
+    display: none;
+  }
 }
 
 @media (max-width: 760px) {

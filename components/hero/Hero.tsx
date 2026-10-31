@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { site } from '@/content/site';
+import { ChromaticText } from '@/components/ui/ChromaticText';
 import { Tag } from '@/components/ui/Tag';
 import { HeroReveal } from './HeroReveal';
 
@@ -23,7 +24,9 @@ export function Hero() {
       </div>
 
       <div className="hero-copy">
-        <h1 className="hero-name">{site.name}</h1>
+        <h1 className="hero-name">
+          <ChromaticText text={site.name} />
+        </h1>
         <p className="hero-tagline">
           As long as I live,
           <br />
@@ -32,13 +35,17 @@ export function Hero() {
             <span className="sr-only">infinite</span>
             <svg
               className="hero-infinity-icon"
-              viewBox="0 8 24 8"
+              viewBox="0 0 48 24"
               aria-hidden="true"
               focusable="false"
             >
               <path
-                fill="currentColor"
-                d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.4}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M24 12 C24 12 18 3 11 3 C5 3 2 7.5 2 12 C2 16.5 5 21 11 21 C18 21 24 12 24 12 C24 12 30 3 37 3 C43 3 46 7.5 46 12 C46 16.5 43 21 37 21 C30 21 24 12 24 12 Z"
               />
             </svg>
           </span>{' '}

@@ -1,11 +1,17 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FullScreenMenu } from './FullScreenMenu';
 
 export function NavMenu() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const burgerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
@@ -21,7 +27,11 @@ export function NavMenu() {
         <i />
         <i />
       </button>
-      <FullScreenMenu open={open} onClose={() => setOpen(false)} triggerRef={burgerRef} />
+      {mounted &&
+        createPortal(
+          <FullScreenMenu open={open} onClose={() => setOpen(false)} triggerRef={burgerRef} />,
+          document.body,
+        )}
     </>
   );
 }
